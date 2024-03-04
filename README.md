@@ -28,7 +28,9 @@
 
 ## Default Installation Informarion
 - Panel Port: 2095
+- Panel Path: /app/
 - Subscription Port: 2096
+- Subscription Path: /sub/
 - User/Passowrd: admin
 
 ## Install & Upgrade to Latest Version
@@ -43,6 +45,19 @@ bash <(curl -Ls https://raw.githubusercontent.com/zheminsun/s-ui/main/install.sh
 
 ```sh
 bash <(curl -Ls https://raw.githubusercontent.com/zheminsun/s-ui/main/install.sh) 0.0.1
+```
+
+## Uninstall S-UI
+
+```sh
+systemctl disable sing-box --now
+systemctl disable s-ui  --now
+
+rm -f /etc/systemd/system/s-ui.service
+rm -f /etc/systemd/system/sing-box.service
+systemctl daemon-reload
+
+rm -fr /usr/local/s-ui
 ```
 
 ## Install using Docker
@@ -82,6 +97,7 @@ docker build -t s-ui .
 
 - English
 - Farsi
+- Chinese (Simplified)
 
 ## Features
 
@@ -140,5 +156,4 @@ certbot certonly --standalone --register-unsafely-without-email --non-interactiv
 </details>
 
 ## Stargazers over Time
-
-[![Stargazers over time](https://starchart.cc/alireza0/s-ui.svg)](https://starchart.cc/alireza0/s-ui)
+[![Stargazers over time](https://starchart.cc/alireza0/s-ui.svg?variant=adaptive)](https://starchart.cc/alireza0/s-ui)

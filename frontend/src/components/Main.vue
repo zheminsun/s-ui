@@ -47,7 +47,7 @@
         <v-col cols="12" sm="6" md="3" v-for="i in reloadItems" :key="i">
           <v-card class="rounded-lg" variant="outlined" height="200px"
                   :title="menuItems.flatMap(cat => cat.value).find(m => m.value == i)?.title">
-            <v-card-text style="padding: 0 16px;">
+            <v-card-text style="padding: 0 16px;" align="center" justify="center">
               <Gauge :tilesData="tilesData" :type="i" v-if="i.charAt(0) == 'g'" />
               <History :tilesData="tilesData" :type="i" v-if="i.charAt(0) == 'h'" />
               <template v-if="i == 'i-sys'">
@@ -184,7 +184,7 @@ const reloadItems = computed({
 
 const reloadData = async () => {
   const request = [...new Set(reloadItems.value.map(r => r.split('-')[1]))]
-  const data = await HttpUtils.get('/api/status',{ r: request.join(',')})
+  const data = await HttpUtils.get('api/status',{ r: request.join(',')})
   if (data.success) {
     tilesData.value = data.obj
   }
